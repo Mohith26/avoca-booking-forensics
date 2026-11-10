@@ -5,7 +5,7 @@
   const fmt$ = (v) => '$' + Math.round(v).toLocaleString('en-US');
   const fmtK = (v) => (v < 0 ? '−' : '') + (Math.abs(v) >= 1000 ? '$' + (Math.abs(v) / 1000).toFixed(Math.abs(v) >= 100000 ? 0 : 1) + 'k' : fmt$(Math.abs(v)));
   const pct = (v, d = 1) => (v * 100).toFixed(d) + '%';
-  const pp = (v, d = 1) => (v >= 0 ? '+' : '') + (v * 100).toFixed(d) + ' pts';
+  const pp = (v, d = 1) => (v >= 0 ? '+' : '−') + Math.abs(v * 100).toFixed(d) + ' pts';
   const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
   const [dataRes, cfRes] = await Promise.all([fetch('data/calls.json'), fetch('data/counterfactuals.json')]);
@@ -138,8 +138,10 @@
       <div class="muted" style="margin-bottom:2px">Predicted booking probability after each turn. Agent turns show the change from before the turn to after the caller's reaction; credit from a later generic exit is carried back to the turn the caller first objected to.</div>
       ${svg}
       <div class="turns">${turns}</div>`;
-    const bl = document.querySelector('.turn.blame');
-    if (bl) bl.scrollIntoView({ block: 'nearest' });
+    // scroll only the transcript pane to the blamed turn; never move the page
+    const box = document.querySelector('#callView .turns');
+    const bl = box && box.querySelector('.turn.blame');
+    if (bl) box.scrollTop = Math.max(0, bl.offsetTop - 80);
   }
 
   // ---------------------------------------------------------------- replay
@@ -189,7 +191,7 @@
     });
     const z = 1.96;
     const res = [
-      ['Projected booking rate', pct(P.est), `95% CI ${pct(P.lo)} – ${pct(P.hi)} · today ${pct(base)}`],
+      ['Projected booking rate', pct(P.est), `CI ${pct(P.lo)}–${pct(P.hi)} · today ${pct(base)}`],
       ['Lift', pp(lift), `95% CI ${pp(lo)} to ${pp(hi)}`],
       ['Lost leads recovered', Math.round(rec).toLocaleString(), `± ${Math.round(z * Math.sqrt(recV))} of ${est.strata.filter((r) => r.key !== 'booked').reduce((s, r) => s + r.N, 0)} lost`],
       ['Booked calls broken', Math.round(reg).toLocaleString(), `± ${Math.round(z * Math.sqrt(regV))} of ${est.strata.find((r) => r.key === 'booked').N} booked`],
@@ -225,7 +227,7 @@
     const vals = rows.flatMap(([, e]) => [e.lo, e.hi]).concat([base, truth]);
     let mn = Math.min(...vals), mx = Math.max(...vals);
     const pad = (mx - mn) * 0.12 + 0.003; mn -= pad; mx += pad;
-    const W = 640, H = 210, pl = 160, pr = 20, pt = 18;
+    const W = 640, H = 210, pl = 160, pr = 90, pt = 18;
     const x = (v) => pl + (W - pl - pr) * (v - mn) / (mx - mn);
     let s = `<svg viewBox="0 0 ${W} ${H}" class="forest">`;
     const ticks = 5;
@@ -240,7 +242,7 @@
       s += `<text x="0" y="${y + 4}" font-size="12.5" fill="#3d5068">${name}</text>`;
       s += `<line x1="${x(e.lo)}" x2="${x(e.hi)}" y1="${y}" y2="${y}" stroke="${col}" stroke-width="6" stroke-linecap="round" opacity=".35"/>`;
       s += `<circle cx="${x(e.est)}" cy="${y}" r="6" fill="${col}"/>`;
-      s += `<text x="${x(e.est)}" y="${y - 11}" font-size="11" fill="#3d5068" text-anchor="middle">${pct(e.est)} ± ${((e.hi - e.lo) * 50).toFixed(1)}</text>`;
+      s += `<text x="${x(e.hi) + 10}" y="${y + 4}" font-size="11.5" fill="#3d5068">${pct(e.est)} ± ${((e.hi - e.lo) * 50).toFixed(1)}</text>`;
     });
     s += `<text x="${x(truth) + 4}" y="${H - 38}" font-size="10.5" fill="#16a34a">truth ${pct(truth)}</text>`;
     s += '</svg>';
@@ -252,7 +254,11 @@
     const nPt = lift > 0 ? F.abSampleSize(base, base + lift) : Infinity;
     const nCons = lo > 0 ? F.abSampleSize(base, base + lo) : Infinity;
     const days = (m) => (isFinite(m) ? Math.ceil(2 * m / perDay) : null);
-    const line = (label, m) => `<div class="row" style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #edf2fa"><span>${label}</span><span><b>${isFinite(m) ? m.toLocaleString() : '–'}</b> leads / arm${isFinite(m) ? ` <span class="muted">· ~${days(m)} days at ${perDay.toFixed(0)} leads/day</span>` : ''}</span></div>`;
+    const line = (label, m) => {
+      const ok = isFinite(m) && lo > 0;
+      const val = ok ? `<b>${m.toLocaleString()}</b> leads / arm <span class="muted">· ~${days(m)} days at ${perDay.toFixed(0)} leads/day</span>` : '<span class="muted">not sized: interval includes zero</span>';
+      return `<div style="display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid #edf2fa"><span style="white-space:nowrap">${label}</span><span style="text-align:right">${val}</span></div>`;
+    };
     $('abplan').innerHTML = `
       <div class="muted" style="margin-bottom:6px">Two-sided test, α = 0.05, 80% power, 50/50 split, lead booking rate as the primary metric.</div>
       ${line('Size for the point estimate', nPt)}

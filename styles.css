@@ -32,10 +32,10 @@ button, select, input { font-family: inherit; }
 .ws b { font-size: 13px; display: block; }
 .ws small { color: var(--text-3); font-size: 11.5px; }
 .nav-h { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); margin: 16px 10px 6px; font-weight: 600; }
-.nav a { display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 8px; color: var(--text-2); text-decoration: none; font-size: 13.5px; font-weight: 500; }
+.nav a { white-space: nowrap; display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 8px; color: var(--text-2); text-decoration: none; font-size: 13.5px; font-weight: 500; }
 .nav a svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; flex: none; }
 .nav a.active { background: var(--brand-50); color: var(--brand-dark); font-weight: 600; }
-.nav a .new { margin-left: auto; font-size: 10px; font-weight: 700; color: var(--brand); background: #e0eeff; padding: 2px 6px; border-radius: 999px; }
+.nav a .new { margin-left: auto; font-size: 9.5px; font-weight: 700; color: var(--brand); background: #e0eeff; padding: 2px 6px; border-radius: 999px; }
 
 /* main */
 main { padding: 26px 40px 40px; max-width: 1240px; }
@@ -71,12 +71,12 @@ h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 6px
 /* failure modes table */
 table { width: 100%; border-collapse: collapse; }
 th { text-align: left; font-size: 12px; font-weight: 600; color: var(--text-3); padding: 8px 8px; border-bottom: 1px solid var(--border); }
-td { padding: 10px 8px; border-bottom: 1px solid var(--border-soft); font-size: 13.5px; vertical-align: middle; }
+td { padding: 10px 8px; white-space: nowrap; border-bottom: 1px solid var(--border-soft); font-size: 13.5px; vertical-align: middle; }
 tr.mode-row { cursor: pointer; }
 tr.mode-row:hover td { background: #f7faff; }
 tr.mode-row.sel td { background: var(--brand-50); }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-.bar { height: 8px; border-radius: 999px; background: var(--border-soft); overflow: hidden; width: 120px; display: inline-block; vertical-align: middle; margin-right: 8px; }
+.bar { height: 8px; border-radius: 999px; background: var(--border-soft); overflow: hidden; width: 90px; display: inline-block; vertical-align: middle; margin-right: 8px; }
 .bar > i { display: block; height: 100%; background: #f59e0b; border-radius: 999px; }
 .chip { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 999px; font-size: 11.5px; font-weight: 600; white-space: nowrap; }
 .chip.green { background: var(--green-bg); color: var(--green); }
@@ -105,8 +105,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .transcript-wrap { padding: 16px 20px; }
 .vchart { width: 100%; height: 150px; display: block; }
 .turns { margin-top: 10px; max-height: 470px; overflow: auto; padding-right: 4px; }
-.turn { display: grid; grid-template-columns: 64px 1fr 88px; gap: 10px; padding: 8px 10px; border-radius: 8px; align-items: start; }
-.turn .who { font-size: 11.5px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .04em; padding-top: 2px; }
+.turn { display: grid; grid-template-columns: 84px 1fr 72px; gap: 10px; padding: 8px 10px; border-radius: 8px; align-items: start; }
+.turn .who { white-space: nowrap; font-size: 11.5px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .04em; padding-top: 2px; }
 .turn.agent .who { color: var(--brand-dark); }
 .turn .txt { line-height: 1.5; font-size: 13.5px; }
 .turn .tags { margin-top: 4px; display: flex; gap: 4px; flex-wrap: wrap; }
@@ -149,3 +149,6 @@ input[type=range] { width: 100%; accent-color: var(--brand); }
 footer { margin-top: 34px; color: var(--text-3); font-size: 12px; border-top: 1px solid var(--border); padding-top: 14px; }
 footer a { color: var(--text-2); }
 .tip { border-bottom: 1px dotted var(--text-3); cursor: help; }
+
+td:first-child { white-space: normal; }
+.turns { position: relative; }
