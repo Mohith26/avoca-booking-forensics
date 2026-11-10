@@ -115,7 +115,7 @@
       ? '<span class="chip green">Matches planted cause</span>'
       : (r.blameTurn === c.truth.turn ? '<span class="chip green">Blamed turn matches planted cause</span>' : `<span class="chip amber">Planted cause: turn ${c.truth.turn} (${esc((F.MODES[c.truth.mode] || {}).label || '')})</span>`);
     // V curve
-    const W = 760, H = 150, pl = 34, pr = 10, pt = 12, pb = 24;
+    const W = 860, H = 150, pl = 34, pr = 10, pt = 12, pb = 24;
     const xs = (i) => pl + (W - pl - pr) * (i / Math.max(1, c.turns.length - 1));
     const ys = (v) => pt + (H - pt - pb) * (1 - v);
     const path = r.V.map((v, i) => `${i ? 'L' : 'M'}${xs(i).toFixed(1)},${ys(v).toFixed(1)}`).join('');
