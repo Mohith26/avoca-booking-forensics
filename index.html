@@ -3,103 +3,121 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Booking Forensics · concept demo for Avoca</title>
+<title>Responder · Booking Forensics (concept)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 <div class="app">
   <aside class="side">
-    <div class="ws"><div class="dot" id="wsDot">A</div><div><b id="wsName">All teams</b><small>Enterprise workspace</small></div></div>
-    <nav class="nav">
-      <a href="#"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
-      <div class="nav-h">Products</div>
-      <a href="#"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Responder</a>
-      <a href="#"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9 5.5-.8z"/></svg>Coach</a>
-      <a href="#"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Workflows</a>
-      <div class="nav-h">Analytics</div>
-      <a href="#"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Overview</a>
-      <a href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg>Oversight</a>
-      <a href="#"><svg viewBox="0 0 24 24"><path d="M9 3v6l-5 9a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3l-5-9V3M8 3h8"/></svg>A/B Test</a>
-      <a href="#" class="active"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M8.5 11h5"/></svg>Booking Forensics<span class="new">New</span></a>
-      <div class="nav-h">Settings</div>
-      <a href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Settings</a>
-    </nav>
+    <div class="side-scroll">
+      <div class="team"><div class="av" id="teamAv">A</div><div><div class="nm" id="teamNm">All teams</div><div class="sub">Enterprise</div></div><i data-lucide="chevrons-up-down"></i></div>
+      <nav class="nav">
+        <a href="#"><i data-lucide="house"></i>Home</a>
+        <a href="#"><i data-lucide="chart-column"></i>Analytics</a>
+        <div class="grp">Deploy</div>
+        <a href="#"><i data-lucide="rocket"></i>Launchpad</a>
+        <a href="#"><i data-lucide="clipboard-list"></i>Implementation</a>
+        <a href="#"><i data-lucide="flask-conical"></i>Testing</a>
+        <div class="grp">Products</div>
+        <a href="#" class="active"><i data-lucide="phone"></i>Responder</a>
+        <a href="#"><i data-lucide="megaphone"></i>Outbound</a>
+        <a href="#"><i data-lucide="zap"></i>Speed-to-Lead</a>
+        <a href="#"><i data-lucide="headphones"></i>Coach</a>
+        <a href="#"><i data-lucide="calendar-days"></i>Simple Scheduler</a>
+        <div class="grp">Channels</div>
+        <a href="#"><i data-lucide="phone-call"></i>Calls<span class="badge">NEW</span></a>
+        <a href="#"><i data-lucide="message-square"></i>Messages</a>
+        <a href="#"><i data-lucide="calendar-check"></i>Booked Calls</a>
+        <a href="#"><i data-lucide="list-checks"></i>Tasks</a>
+        <div class="grp">Settings</div>
+        <a href="#"><i data-lucide="building-2"></i>Business Info</a>
+        <a href="#"><i data-lucide="bot"></i>Agents</a>
+        <a href="#"><i data-lucide="refresh-cw"></i>CRM Sync</a>
+        <a href="#"><i data-lucide="plug"></i>Integrations</a>
+        <a href="#"><i data-lucide="bell"></i>Notifications</a>
+        <a href="#"><i data-lucide="life-buoy"></i>Support</a>
+      </nav>
+    </div>
+    <div class="user"><div class="av">DE</div><div><div class="nm">Deployed Engineering</div><div class="em">demo user</div></div><i data-lucide="ellipsis-vertical"></i></div>
   </aside>
 
   <main>
-    <div class="page-head">
-      <div>
-        <h1>Booking Forensics</h1>
-        <p class="sub">Find the turn where each lost booking went wrong, size every failure mode by the job value at stake, then replay a proposed change against those calls and estimate its lift, with an honest confidence interval, before it touches live traffic.</p>
-      </div>
-      <div class="controls">
-        <span class="ctl-label">Team</span>
-        <select class="select" id="team"></select>
-        <span class="pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7a94b0" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Oct 1, 2026 – Oct 30, 2026</span>
-      </div>
-    </div>
+    <header class="ph">
+      <h1>Responder</h1>
+      <p>Configure how Avoca answers, books, transfers, and classifies your calls.</p>
+      <span class="bell"><i data-lucide="bell"></i></span>
+      <nav class="tabs">
+        <a href="#">Overview</a><a href="#">Functionality</a><a href="#">Bookability</a><a href="#">Transfer Destinations</a><a href="#">Call Classification</a><a href="#">Simulation Testing</a><a href="#">Drop-off Analysis</a><a href="#" class="active">Booking Forensics<span class="new">NEW</span></a>
+      </nav>
+    </header>
 
-    <div class="kpis" id="kpis"></div>
-
-    <div class="section-title">Why bookings were lost <small>Each lost lead is attributed to the single turn with the largest drop in predicted booking probability</small></div>
-    <div class="grid2">
-      <div class="card">
-        <div class="card-h"><h2>Failure modes</h2><span class="hint">Click a row to inspect its calls</span></div>
-        <div class="card-b"><table><thead><tr><th>Failure mode</th><th>Lost leads</th><th class="num">Job value at stake</th><th class="num">Median drop</th><th>Fixable in config?</th></tr></thead><tbody id="modes"></tbody></table></div>
-      </div>
-      <div class="card valid">
-        <div class="card-h"><h2>How much to trust the attribution</h2></div>
-        <div class="card-b" id="valid"></div>
-      </div>
-    </div>
-
-    <div class="section-title">Call forensics <small id="fxTitle"></small></div>
-    <div class="card forensics">
-      <div class="call-list" id="callList"></div>
-      <div class="transcript-wrap" id="callView"></div>
-    </div>
-
-    <div class="section-title">Replay a proposed change <small>Estimate the booking-rate lift offline, then size the A/B test</small></div>
-    <div class="cands" id="cands"></div>
-    <div class="card" style="margin-top:12px">
-      <div class="sliders">
-        <div class="sl"><label>Calls to replay <b id="bLbl"></b></label><input type="range" id="budget" min="100" max="900" step="50" value="400"></div>
-        <div class="sl"><label><span>Human-reviewed replays <span class="tip" title="A reviewer reads the replayed call and records whether it would have booked. Only replays that diverged from the original call need review.">(?)</span></span> <b id="lLbl"></b></label><input type="range" id="labels" min="20" max="200" step="10" value="60"></div>
-        <div style="display:flex;gap:8px"><button class="btn" id="resample">Resample</button><button class="btn" id="covBtn">Check interval honesty</button></div>
-      </div>
-    </div>
-    <div class="results" id="results"></div>
-    <div id="verdict"></div>
-    <div class="grid2">
-      <div class="card">
-        <div class="card-h"><h2>Projected lead booking rate</h2><span class="hint">95% intervals</span></div>
-        <div class="card-b"><svg class="forest" id="forest"></svg>
-          <div class="legend"><span><i style="background:#94a3b8"></i>Judge only</span><span><i style="background:#f59e0b"></i>Human review only</span><span><i style="background:#388eff"></i>Judge + human review (PPI++)</span><span><i style="background:#16a34a"></i>Simulation ground truth</span></div>
+    <div class="content">
+      <div class="sh">
+        <h2>Lost Booking Analysis <a href="#trust">How attribution works <i data-lucide="arrow-right"></i></a></h2>
+        <div class="ctrls">
+          <div class="sel" title="Team"><i data-lucide="users"></i><select id="team"></select><i data-lucide="chevron-down" class="chev" style="position:absolute;top:9px"></i></div>
+          <button class="btn"><i data-lucide="chart-line"></i>Metrics <span class="n">(5)</span></button>
+          <button class="btn"><i data-lucide="sliders-horizontal"></i>Filters <span class="dot">1</span></button>
+          <button class="btn"><i data-lucide="calendar"></i>Oct 1, 2026 – Oct 30, 2026<i data-lucide="chevron-down"></i></button>
+          <button class="btn icon" title="Refresh"><i data-lucide="refresh-cw"></i></button>
+          <button class="btn icon" title="Export"><i data-lucide="download"></i></button>
         </div>
       </div>
-      <div class="card">
-        <div class="card-h"><h2>A/B plan</h2></div>
-        <div class="card-b" id="abplan"></div>
+      <div class="kpis k5" id="kpis"></div>
+      <div class="row2">
+        <div class="card">
+          <div class="ch" style="padding-bottom:12px"><div class="t"><span style="font-size:15px;color:#2e2e2e;font-weight:600">Lost Leads by Cause</span><a href="#">See all calls <i data-lucide="arrow-right"></i></a></div><div class="s" style="margin-top:2px">Each lost lead is attributed to the one turn with the largest drop in predicted booking probability. Click to filter.</div></div>
+          <table class="tbl"><thead><tr><th>Cause</th><th class="num">Lost leads</th><th class="num">Job value</th><th class="num">Median drop</th><th>Fix in</th></tr></thead><tbody id="modes"></tbody></table>
+        </div>
+        <div class="card ch rubric" id="trust"></div>
       </div>
-    </div>
-    <div class="card" style="margin-top:12px" id="covCard" hidden>
-      <div class="card-h"><h2>Interval honesty check</h2><span class="hint" id="covHint"></span></div>
-      <div class="card-b" id="cov"></div>
-    </div>
-    <div class="card" style="margin-top:12px">
-      <div class="card-h"><h2>By stratum</h2><span class="hint">Strata are the failure modes above; replays are allocated by Neyman allocation after a pilot</span></div>
-      <div class="card-b"><table><thead><tr><th>Stratum</th><th class="num">Leads</th><th class="num">Replayed</th><th class="num">Diverged</th><th class="num">Reviewed</th><th class="num">Judge (diverged)</th><th class="num">Review (diverged)</th><th class="num">λ</th><th class="num">Est. booking rate</th></tr></thead><tbody id="strata"></tbody></table></div>
-    </div>
-    <div class="card" style="margin-top:12px">
-      <div class="card-h"><h2>Replay example</h2><span class="hint" id="exHint"></span></div>
-      <div class="card-b" id="example"></div>
-    </div>
 
-    <footer>Unofficial concept demo by Mohith Gajjela. Not affiliated with Avoca. Synthetic data: fictional businesses, callers and addresses generated by a seeded script. Every number on this page is computed in your browser from <a href="data/calls.json">data/calls.json</a> and <a href="data/counterfactuals.json">data/counterfactuals.json</a> by <a href="core.js">core.js</a>. Source: <a href="https://github.com/Mohith26/avoca-booking-forensics">github.com/Mohith26/avoca-booking-forensics</a>.</footer>
+      <div class="sec">
+        <div class="sh"><h2>Call Review <span class="cnt" id="fxCount"></span></h2>
+          <div class="ctrls"><button class="btn"><i data-lucide="arrow-up-down"></i>Sort: Drop</button><button class="btn"><i data-lucide="columns-3"></i>Columns <span class="n">(6)</span></button></div>
+        </div>
+        <div class="calls">
+          <div class="card clist" id="callList"></div>
+          <div id="callView"></div>
+        </div>
+      </div>
+
+      <div class="sec" id="replaySec">
+        <div class="sh"><h2>Replay a Proposed Change <a href="#">Open Simulation Testing <i data-lucide="arrow-right"></i></a></h2>
+          <div class="ctrls"><button class="btn" id="resample"><i data-lucide="shuffle"></i>Resample</button><button class="btn" id="covBtn"><i data-lucide="shield-check"></i>Check interval honesty</button></div>
+        </div>
+        <div class="card cfg">
+          <div><div class="lbl">Proposed change</div><div class="seg" id="cands"></div><div class="desc" id="candDesc" style="margin-top:10px"></div></div>
+          <div class="sl"><div class="lbl">Replay sample</div><label>Calls to replay <b id="bLbl"></b></label><input type="range" id="budget" min="100" max="900" step="50" value="400"><div class="muted" style="margin-top:6px">Stratified by cause; 30% pilot, then Neyman allocation.</div></div>
+          <div class="sl"><div class="lbl">Human review</div><label>Reviewed replays <b id="lLbl"></b></label><input type="range" id="labels" min="20" max="200" step="10" value="60"><div class="muted" style="margin-top:6px">Only replays that diverge from the original call need review.</div></div>
+        </div>
+        <div class="kpis k5 mt" id="results"></div>
+        <div id="verdict"></div>
+        <div class="row2">
+          <div class="card ch">
+            <div class="t"><span>Projected Lead Booking Rate</span><span class="s">95% intervals, same replay sample</span></div>
+            <div class="big" id="forestBig"></div>
+            <div class="legend" style="margin-top:8px"><span><i style="background:#9ca3af"></i>Judge only</span><span><i style="background:#eab308"></i>Review only</span><span><i style="background:#388eff"></i>Judge + review (PPI++)</span><span><i style="background:#22c55e"></i>Simulated ground truth</span><span><i class="dash"></i>Today</span></div>
+            <svg class="forest" id="forest"></svg>
+          </div>
+          <div class="card ch" id="abplan"></div>
+        </div>
+        <div class="card mt" id="covCard" hidden></div>
+        <div class="card mt">
+          <div class="tbl-tools"><div style="font-weight:600;font-size:15px">Replay Strata</div><div class="search"><i data-lucide="info"></i>λ is the PPI++ weight on the judge: near 1 when the judge tracks human review, near 0 when it does not</div></div>
+          <table class="tbl"><thead><tr><th>Stratum</th><th class="num">Leads</th><th class="num">Replayed</th><th class="num">Diverged</th><th class="num">Reviewed</th><th class="num">Judge</th><th class="num">Review</th><th class="num" style="text-transform:none">λ</th><th class="num">Est. booking rate</th></tr></thead><tbody id="strata"></tbody></table>
+        </div>
+        <div class="card mt" id="example"></div>
+      </div>
+
+      <footer>Unofficial concept demo by Mohith Gajjela. Not affiliated with Avoca. Synthetic data (fictional businesses, callers and addresses from a seeded script). Every number is computed in the browser from <a href="data/calls.json">calls.json</a> and <a href="data/counterfactuals.json">counterfactuals.json</a> by <a href="core.js">core.js</a> · <a href="https://github.com/Mohith26/avoca-booking-forensics">source</a></footer>
+    </div>
   </main>
 </div>
+<div class="ask">Ask<i data-lucide="send"></i></div>
 <script src="core.js"></script>
 <script src="app.js"></script>
 </body>
