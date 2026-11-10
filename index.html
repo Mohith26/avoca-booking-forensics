@@ -13,7 +13,7 @@
 <div class="app">
   <aside class="side">
     <div class="side-scroll">
-      <div class="team"><div class="av" id="teamAv">A</div><div><div class="nm" id="teamNm">All teams</div><div class="sub">Enterprise</div></div><i data-lucide="chevrons-up-down"></i></div>
+      <div class="team" title="Switch team"><div class="av" id="teamAv">A</div><div><div class="nm" id="teamNm">All teams</div><div class="sub" id="teamSub">Enterprise</div></div><i data-lucide="chevrons-up-down"></i><select id="team" aria-label="Switch team"></select></div>
       <nav class="nav">
         <a href="#"><i data-lucide="house"></i>Home</a>
         <a href="#"><i data-lucide="chart-column"></i>Analytics</a>
@@ -58,7 +58,6 @@
       <div class="sh">
         <h2>Lost Booking Analysis <a href="#trust">How attribution works <i data-lucide="arrow-right"></i></a></h2>
         <div class="ctrls">
-          <div class="sel" title="Team"><i data-lucide="users"></i><select id="team"></select><i data-lucide="chevron-down" class="chev" style="position:absolute;top:9px"></i></div>
           <button class="btn"><i data-lucide="chart-line"></i>Metrics <span class="n">(5)</span></button>
           <button class="btn"><i data-lucide="sliders-horizontal"></i>Filters <span class="dot">1</span></button>
           <button class="btn"><i data-lucide="calendar"></i>Oct 1, 2026 – Oct 30, 2026<i data-lucide="chevron-down"></i></button>

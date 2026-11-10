@@ -7,6 +7,8 @@ An unofficial concept screen for an AI call-handling dashboard in home services 
 1. **Where exactly did each lost booking go wrong?** Not "why didn't it book" at the call level, but *which turn* lost it, how much each failure mode is worth, and whether it is fixable in prompt/policy config.
 2. **If I change the prompt or policy, how much will booking rate move, and how sure am I, before any live caller hears it?**
 
+The screen is presented as a new **Responder → Booking Forensics** tab, styled after the dashboard as shown in Avoca's public help-center screenshots (Instrument Sans, the dashboard's own color tokens, dark sidebar, Lucide icons, Coach-style cards, tables and call details). Switch teams from the team switcher at the top of the sidebar.
+
 Unofficial concept demo by Mohith Gajjela. Not affiliated with Avoca. All data is synthetic (fictional businesses, callers and addresses).
 
 ## Why this and not what already exists

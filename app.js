@@ -48,6 +48,7 @@
     const idx = idxOf();
     $('teamNm').textContent = S.team === 'all' ? 'All teams' : custName[S.team];
     $('teamAv').textContent = S.team === 'all' ? 'A' : custName[S.team][0];
+    $('teamSub').textContent = S.team === 'all' ? 'Enterprise · 3 teams' : DATA.meta.customers.find((c) => c.id === S.team).trade + ' · ' + DATA.meta.customers.find((c) => c.id === S.team).city;
     const results = lostResults(idx);
     const modes = F.failureModes(results);
     if (!S.mode || !modes.find((m) => m.mode === S.mode)) S.mode = modes[0].mode;
